@@ -1,14 +1,14 @@
 // 测试导入 es6语法 export import
-import { add, mul } from './js/mathUtil';
-console.log(add(100,200));
-console.log(mul(100,200));
+// import { add, mul } from './js/mathUtil';
+// console.log(add(100,200));
+// console.log(mul(100,200));
 
 // 测试css
-require('./css/style.css');
-const elemnt = document.createElement('div');
-elemnt.innerHTML = 'test-css';
-elemnt.classList.add('hello');
-document.body.appendChild(elemnt);
+// require('./css/style.css');
+// const elemnt = document.createElement('div');
+// elemnt.innerHTML = 'test-css';
+// elemnt.classList.add('hello');
+// document.body.appendChild(elemnt);
 
 // 根据环境不同，引入不同的配置文件
 import Config from '../config';
@@ -62,12 +62,15 @@ import Vue from 'vue';
 
 // 分离后  el和template关系  template会替换el所对应的html
 // import App from './vue/app';  //导入App.js文件
-import App from './vue/App.vue'                       // 导入App.vue文件
+import App from './App'                       // 导入App.vue文件
+import router from './router';
+
 new Vue({
     el: '#app',
     template: '<App/>',
     components: {
         App
-    }
+    },
+    router
 });
 
