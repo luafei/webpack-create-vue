@@ -21,7 +21,18 @@ const config = {
                     limit: 10000
                 }
             },
-            { test: /\.vue$/, use: ['vue-loader'] }
+            { test: /\.vue$/, use: ['vue-loader'] },
+            {
+                test:/\.js$/,
+                exclude:/(node_modules|bower_components)/,//排除掉node_module目录
+                use:{
+                    loader:'babel-loader',
+                    options:{
+                        presets:['env'], //转码规则
+                        plugins:['transform-runtime']
+                    }
+                }
+            }
         ]
     },
     plugins: [

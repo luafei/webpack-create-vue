@@ -15,6 +15,13 @@ import Config from '../config';
 console.log('main/config');
 console.log(Config);
 
+// import common
+import {add, pAsync, Person} from './common/utils'
+console.log(add(100,200));
+console.log(pAsync());
+let person = new Person(100, 200);
+console.log(person.toString());
+
 // 测试引用vue
 import Vue from 'vue';
 // 代码分离 z最终到App.js文件中

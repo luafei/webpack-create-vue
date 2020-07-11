@@ -28,3 +28,12 @@ npm i vue-router -S
 npm i vuex -S
 // 增加axios请求
 npm i axios -S
+
+// 处理babel
+npm install --save-dev babel-loader@7.1.1 babel-core@6.22.1 babel-preset-env@1.3.2
+npm install --save-dev babel-polyfill    // 这样会在打包的时候提供一个垫脚片用以兼容低版本浏览器中不支持的API（兼容低版本浏览器的一个方法）
+npm install babel-plugin-transform-runtime --save-dev
+npm install babel-runtime --save
+//  transform-runtime解决代码重复问题
+//  在打包的过程中，babel会在包里提供一些工具函数，而这些工具函数可能会重复的出现在多个模块。
+// 这样会导致打包的体积过大，所以babel提供了babel-transform-runtime解决这个体积过大的问题
