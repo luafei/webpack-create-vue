@@ -37,3 +37,31 @@ npm install babel-runtime --save
 //  transform-runtime解决代码重复问题
 //  在打包的过程中，babel会在包里提供一些工具函数，而这些工具函数可能会重复的出现在多个模块。
 // 这样会导致打包的体积过大，所以babel提供了babel-transform-runtime解决这个体积过大的问题
+
+处理文件路径引用问题
+resolve: {
+    // 扩展名
+    extensions: ['.js', '.css', '.json', '.vue'],
+    // 定义路径别名
+    alias: {
+        vue$: 'vue/dist/vue.esm.js',
+        '@': resolve('src'),
+        'assets': resolve('src/assets'),
+        'components': resolve('src/components'),
+        'common': resolve('src/common')
+    }
+}
+
+html引用: ~assets     js中引用: assets
+清除文件夹目录dest  clean-webpack-plugin
+图片压缩    image-webpack-loader
+模块热更新
+const config = merge(base, {
+    devServer: {
+        contentBase: './dist',
+        hot: true
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
+});
