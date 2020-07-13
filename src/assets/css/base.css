@@ -1,0 +1,9 @@
+@import "normalize.css";
+
+:root {
+    --my-cool-background: #f6f6f6;
+}
+
+#app {
+    background-color: var(--my-cool-background);
+}

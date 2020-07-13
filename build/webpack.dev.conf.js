@@ -1,12 +1,15 @@
 const merge = require('webpack-merge');
 const base = require('./webpack.base.conf');
+const webpack = require('webpack');
 
 const config = merge(base, {
     devServer: {
         contentBase: './dist',
-        inline: true
-    }
+        hot: true
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 });
 
-console.log('webpack.dev.config.js', config);
 module.exports = config;

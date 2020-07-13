@@ -1,7 +1,3 @@
-// G
-console.log('config/index');
-console.log(process.env.NODE_ENV);
-
 const config = {
     development: {
         a_API: 'www.test.a.api.com',

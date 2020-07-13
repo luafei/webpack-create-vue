@@ -5,6 +5,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 
+// 处理文件引用路径问题  html中引用 ～assets js中引用 assets
+function resolve(dir) {
+    return path.join(__dirname,'..',  dir)
+}
+
 const config = {
     entry: './src/main.js',
     output: {
@@ -18,21 +23,10 @@ const config = {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
-                    limit: 10000
+                    limit: 50000
                 }
             },
-            { test: /\.vue$/, use: ['vue-loader'] },
-            {
-                test:/\.js$/,
-                exclude:/(node_modules|bower_components)/,//排除掉node_module目录
-                use:{
-                    loader:'babel-loader',
-                    options:{
-                        presets:['env'], //转码规则
-                        plugins:['transform-runtime']
-                    }
-                }
-            }
+            { test: /\.vue$/, use: ['vue-loader'] }
         ]
     },
     plugins: [
@@ -50,7 +44,11 @@ const config = {
         extensions: ['.js', '.css', '.json', '.vue'],
         // 定义路径别名
         alias: {
-            vue$: 'vue/dist/vue.esm.js'
+            vue$: 'vue/dist/vue.esm.js',
+            '@': resolve('src'),
+            'assets': resolve('src/assets'),
+            'components': resolve('src/components'),
+            'common': resolve('src/common')
         }
     }
 };
